@@ -1,13 +1,14 @@
 package com.carloscoding.newsapp.home.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.carloscoding.newsapp.common_ui.news.ArticleAdapter
 import com.carloscoding.newsapp.databinding.FragmentHomeBinding
+import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -30,12 +31,11 @@ class HomeFragment : Fragment() {
         binding.apply {
             viewModel = homeViewModel
             lifecycleOwner = viewLifecycleOwner
-            rvHomeArticles.adapter = ArticleAdapter()
+            homeViewPager.adapter = HomePagerAdapter(this@HomeFragment)
+            TabLayoutMediator(homeTabLayout, homeViewPager){ tab, position ->
+                tab.text = homeViewModel.categories.value?.get(position)
+            }.attach()
         }
-
-        homeViewModel.homeState.observe(viewLifecycleOwner,{
-            Log.d("Testing", "onViewCreated: ${it.isLoading}")
-        })
     }
 
 }
