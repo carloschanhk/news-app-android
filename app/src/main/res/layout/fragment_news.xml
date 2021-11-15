@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.carloscoding.newsapp.common_ui.news.NewsViewModel" />
-        <import type="android.text.TextUtils"/>
-        <import type="android.view.View"/>
+
+        <import type="android.text.TextUtils" />
+
+        <import type="android.view.View" />
     </data>
 
 
@@ -17,28 +20,35 @@
         android:layout_height="match_parent"
         tools:context=".home.ui.HomeFragment">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_articles"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:overScrollMode="never"
-            app:dataset="@{viewModel.newsState.articlesPresented}"
-            android:visibility="@{viewModel.newsState.isLoading? View.GONE : View.VISIBLE}"
-            />
+            app:swipeListener="@{viewModel::onNewsFragmentEvent}"
+            app:isRefreshing="@{viewModel.isSwipeRefreshing}">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_articles"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never"
+                android:visibility="@{viewModel.newsState.isLoading? View.GONE : View.VISIBLE}"
+                app:dataset="@{viewModel.newsState.articlesPresented}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
         <TextView
             android:id="@+id/tv_error_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:text="@{viewModel.newsState.errorMessage}"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="@{viewModel.newsState.errorMessage}"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ProgressBar
             android:id="@+id/progress_loader"
@@ -46,10 +56,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="@{viewModel.newsState.isLoading? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

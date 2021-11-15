@@ -20,11 +20,14 @@ class NewsViewModel @Inject constructor(
     val getTopHeadlinesUseCase: GetTopHeadlinesUseCase
 ) : ViewModel() {
 
-    //TODO: Refresh
     //TODO: Article clicked
+    //TODO: Category Color
 
     private val _newsState = MutableLiveData(NewsState())
     val newsState: LiveData<NewsState> = _newsState
+
+    private val _isSwipeRefreshing = MutableLiveData(false)
+    val isSwipeRefreshing: LiveData<Boolean> = _isSwipeRefreshing
 
     var getHeadlineJob : Job? = null
 
@@ -52,7 +55,7 @@ class NewsViewModel @Inject constructor(
 
             }
             is NewsFragEvent.OnRefresh -> {
-                // TODO: Change State
+                _isSwipeRefreshing.value = true
                 onGettingArticles(category, isRefresh = true)
             }
         }
@@ -94,6 +97,7 @@ class NewsViewModel @Inject constructor(
                     )
                 }
             }
+            _isSwipeRefreshing.value = false
         }
     }
 }
