@@ -23,7 +23,7 @@ class GetTopHeadlinesUseCase @Inject constructor(
                         }
                     }
                     if (isContainAllCategories) {
-                        return@withContext ArticleOutput.Success(it)
+                        return@withContext ArticleOutput.Success(it.sortedByDescending { article -> article.publishedAt })
                     }
                 }
             }
@@ -31,7 +31,7 @@ class GetTopHeadlinesUseCase @Inject constructor(
             val result = repository.getTopHeadlines(categories)
             return@withContext result.takeIfSuccess()?.let {
                 repository.setCache(it)
-                ArticleOutput.Success(it)
+                ArticleOutput.Success(it.sortedByDescending { article -> article.publishedAt })
             } ?: ArticleOutput.Error(result.takeError())
         }
     }

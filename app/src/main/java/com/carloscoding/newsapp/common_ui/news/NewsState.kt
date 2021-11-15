@@ -1,10 +1,9 @@
-package com.carloscoding.newsapp.home.ui
+package com.carloscoding.newsapp.common_ui.news
 
 import com.carloscoding.newsapp.data.Article
 
-data class HomeState(
+data class NewsState(
     val articlesPresented: List<Article> = listOf(),
-    val selectedCategory: String = "Today",
     val errorMessage: String? = null,
     val isLoading: Boolean = true,
 )
