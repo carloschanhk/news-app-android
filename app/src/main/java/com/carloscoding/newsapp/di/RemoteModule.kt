@@ -1,7 +1,7 @@
 package com.carloscoding.newsapp.di
 
 import com.carloscoding.newsapp.api.NewsApi
-import com.carloscoding.newsapp.utils.Constant.Companion.BASE_URL
+import com.carloscoding.newsapp.utils.Constant.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
