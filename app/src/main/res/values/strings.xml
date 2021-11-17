@@ -5,7 +5,7 @@
     <string name="title_profile">Profile</string>
     <string name="news_image_description">News Image</string>
     <string name="edit_icon_description">edit icon</string>
-    <string-array name="category_list" >
+    <string-array name="category_list">
         <item>Business</item>
         <item>Entertainment</item>
         <item>Health</item>
@@ -23,4 +23,6 @@
         <item quantity="one">%d day ago</item>
         <item quantity="other">%d days ago</item>
     </plurals>
+
+    <string name="dummy_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiumoptio, eaque rerum! Provident similique accusantium nemo autem. Veritatisobcaecati tenetur iure eius earum ut molestias architecto voluptate aliquamnihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eossapiente officiis modi at sunt excepturi expedita sint? Sed quibusdamrecusandae alias error harum maxime adipisci amet laborum. Perspiciatisminima nesciunt dolorem! Officiis iure rerum voluptates a cumque velitquibusdam sed amet tempora. Sit laborum ab, eius fugit doloribus teneturfugiat, temporibus enim commodi iusto libero magni deleniti quod quamconsequuntur! Commodi minima excepturi repudiandae velit hic maximedoloremque. Quaerat provident commodi consectetur veniam similique adearum omnis ipsum saepe, voluptas, hic voluptates pariatur est explicabofugiat, dolorum eligendi quam cupiditate excepturi mollitia maiores laboresuscipit quas? Nulla, placeat. Voluptatem quaerat non architecto ab laudantiummodi minima sunt esse temporibus sint culpa, recusandae aliquam numquamtotam ratione voluptas quod exercitationem fuga. Possimus quis earum veniamquasi aliquam eligendi, placeat qui corporis!</string>
 </resources>

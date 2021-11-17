@@ -1,13 +1,16 @@
 package com.carloscoding.newsapp.common_ui.news
 
-import androidx.lifecycle.ViewModelProvider
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import com.carloscoding.newsapp.R
+import androidx.navigation.fragment.findNavController
+import com.carloscoding.newsapp.common_ui.article.ArticleFragmentDirections
+import com.carloscoding.newsapp.data.Article
 import com.carloscoding.newsapp.databinding.FragmentNewsBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -45,10 +48,15 @@ class NewsFragment : Fragment() {
         binding.apply {
             viewModel = newsViewModel
             lifecycleOwner = viewLifecycleOwner
-            rvArticles.adapter = ArticleAdapter()
+            rvArticles.adapter = ArticleAdapter().apply {
+                onNewsItemClickListener = ::onNewsItemClicked
+            }
         }
-
     }
 
+    private fun onNewsItemClicked(article: Article){
+        val action = ArticleFragmentDirections.actionGlobalArticleFragment(article)
+        findNavController().navigate(action)
+    }
 
 }

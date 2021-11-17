@@ -1,5 +1,6 @@
 package com.carloscoding.newsapp.data
 
+import java.io.Serializable
 import java.util.*
 
 data class Article(
@@ -12,4 +13,4 @@ data class Article(
     val title: String?,
     val url: String?,
     val urlToImage: String?
-)
+) : Serializable

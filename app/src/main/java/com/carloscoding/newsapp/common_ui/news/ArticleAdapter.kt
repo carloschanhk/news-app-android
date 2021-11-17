@@ -9,6 +9,8 @@ import com.carloscoding.newsapp.data.Article
 import com.carloscoding.newsapp.databinding.ArticleCardBinding
 
 class ArticleAdapter : ListAdapter<Article, ArticleAdapter.ArticleViewHolder>(DiffCallback) {
+    var onNewsItemClickListener: ((article: Article) -> Unit)? = null
+
     companion object DiffCallback : DiffUtil.ItemCallback<Article>() {
         override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean =
             oldItem == newItem
@@ -19,9 +21,8 @@ class ArticleAdapter : ListAdapter<Article, ArticleAdapter.ArticleViewHolder>(Di
 
     }
 
-
     class ArticleViewHolder(val binding: ArticleCardBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(article: Article){
+        fun bind(article: Article) {
             binding.article = article
         }
     }
@@ -32,6 +33,12 @@ class ArticleAdapter : ListAdapter<Article, ArticleAdapter.ArticleViewHolder>(Di
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         val article = getItem(position)
-        holder.bind(article)
+        holder.apply{
+            bind(article)
+            itemView.setOnClickListener {
+                onNewsItemClickListener?.invoke(article)
+            }
+        }
+
     }
 }
