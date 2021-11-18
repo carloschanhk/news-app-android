@@ -20,9 +20,6 @@ class NewsViewModel @Inject constructor(
     val getTopHeadlinesUseCase: GetTopHeadlinesUseCase
 ) : ViewModel() {
 
-    //TODO: Article clicked
-    //TODO: Category Color
-
     private val _newsState = MutableLiveData(NewsState())
     val newsState: LiveData<NewsState> = _newsState
 

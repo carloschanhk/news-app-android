@@ -1,13 +1,18 @@
 package com.carloscoding.newsapp.common_ui.news
 
+import android.content.res.Resources
+import android.graphics.Color
+import android.provider.Settings.Global.getString
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bumptech.glide.Glide
 import com.carloscoding.newsapp.R
 import com.carloscoding.newsapp.data.Article
+import com.carloscoding.newsapp.utils.Constant
 import java.util.*
 
 @BindingAdapter(value = ["dataset"], requireAll = true)
@@ -41,6 +46,16 @@ fun bindDateToText(textView: TextView, date: Date) {
         }
     } else {
         textView.text = textView.resources.getQuantityString(R.plurals.written_in_day, dayDifference, dayDifference)
+    }
+}
+
+@BindingAdapter("categoryText")
+fun bindColorToTag(textView: TextView, category:String){
+    textView.apply {
+        text = category
+        Constant.ColorMap[category]?.let {
+            background.setTint(Color.parseColor(textView.resources.getString(it)))
+        }
     }
 }
 
