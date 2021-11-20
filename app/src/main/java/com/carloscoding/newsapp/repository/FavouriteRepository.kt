@@ -21,4 +21,16 @@ class FavouriteRepository @Inject constructor(
             Result.Error(e)
         }
     }
+
+    suspend fun isArticleBookmarked(article: Article): Result<Boolean>{
+        return try {
+            Result.Success(datasource.isArticleBookmarked(article))
+        } catch (e:Exception){
+            Result.Error(e)
+        }
+    }
+
+    suspend fun deleteArticle(article: Article){
+        datasource.deleteArticle(article)
+    }
 }

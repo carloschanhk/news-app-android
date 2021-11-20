@@ -1,4 +1,4 @@
-package com.carloscoding.newsapp.domain
+package com.carloscoding.newsapp.domain.remote
 
 import com.carloscoding.newsapp.repository.NewsRepository
 import kotlinx.coroutines.Dispatchers

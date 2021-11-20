@@ -1,4 +1,4 @@
-package com.carloscoding.newsapp.domain
+package com.carloscoding.newsapp.domain.remote
 
 import com.carloscoding.newsapp.data.Article
 import java.lang.Exception

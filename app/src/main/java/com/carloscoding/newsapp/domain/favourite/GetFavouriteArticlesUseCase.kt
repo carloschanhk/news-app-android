@@ -1,4 +1,4 @@
-package com.carloscoding.newsapp.domain
+package com.carloscoding.newsapp.domain.favourite
 
 import com.carloscoding.newsapp.data.Article
 import com.carloscoding.newsapp.repository.FavouriteRepository
@@ -9,7 +9,7 @@ import java.lang.Exception
 import javax.inject.Inject
 
 class GetFavouriteArticlesUseCase @Inject constructor(val repository: FavouriteRepository) {
-    suspend operator fun invoke(): Output{
+    suspend operator fun invoke(): Output {
         return withContext(Dispatchers.IO){
             val result = repository.getArticles()
             result.takeIfSuccess()?.let {

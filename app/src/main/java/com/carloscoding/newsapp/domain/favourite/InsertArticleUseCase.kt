@@ -1,4 +1,4 @@
-package com.carloscoding.newsapp.domain
+package com.carloscoding.newsapp.domain.favourite
 
 import com.carloscoding.newsapp.data.Article
 import com.carloscoding.newsapp.repository.FavouriteRepository

@@ -31,9 +31,11 @@ class ArticleFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.initViewModel(args.article)
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
             article = args.article
+            viewModel = this@ArticleFragment.viewModel
             btnBack.setOnClickListener {
                 findNavController().popBackStack()
             }

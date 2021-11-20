@@ -18,4 +18,12 @@ class FavouriteArticleDatasource @Inject constructor(
     suspend fun getArticles() : Flow<List<Article>>{
         return articleDao.getArticles().map { articles -> articles.map { it.mapToData() } }
     }
+
+    suspend fun isArticleBookmarked(article: Article): Boolean {
+        return articleDao.isArticleBookmarked(publishAt = article.publishedAt, title = article.title)
+    }
+
+    suspend fun deleteArticle(article: Article){
+        articleDao.deleteArticle(publishAt = article.publishedAt, title = article.title)
+    }
 }

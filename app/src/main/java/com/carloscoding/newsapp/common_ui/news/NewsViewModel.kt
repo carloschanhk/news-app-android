@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.carloscoding.newsapp.domain.ArticleOutput
-import com.carloscoding.newsapp.domain.GetHeadlinesByCategoryUseCase
-import com.carloscoding.newsapp.domain.GetTopHeadlinesUseCase
+import com.carloscoding.newsapp.domain.remote.ArticleOutput
+import com.carloscoding.newsapp.domain.remote.GetHeadlinesByCategoryUseCase
+import com.carloscoding.newsapp.domain.remote.GetTopHeadlinesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
