@@ -1,4 +1,4 @@
-package com.carloscoding.newsapp.home.usecase
+package com.carloscoding.newsapp.domain
 
 import com.carloscoding.newsapp.data.Article
 import java.lang.Exception

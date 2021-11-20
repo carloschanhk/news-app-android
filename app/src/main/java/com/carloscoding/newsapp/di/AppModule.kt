@@ -2,11 +2,10 @@ package com.carloscoding.newsapp.di
 
 import android.app.Application
 import androidx.room.Room
-import androidx.room.RoomDatabase
 import com.carloscoding.newsapp.api.NewsApi
-import com.carloscoding.newsapp.database.ArticleDao
-import com.carloscoding.newsapp.database.ArticleDatabase
-import com.carloscoding.newsapp.database.ArticleDatabase.Companion.DATABASE_NAME
+import com.carloscoding.newsapp.local.database.ArticleDao
+import com.carloscoding.newsapp.local.database.ArticleDatabase
+import com.carloscoding.newsapp.local.database.ArticleDatabase.Companion.DATABASE_NAME
 import com.carloscoding.newsapp.utils.Constant.BASE_URL
 import dagger.Module
 import dagger.Provides

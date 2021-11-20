@@ -1,10 +1,8 @@
-package com.carloscoding.newsapp.home.usecase
+package com.carloscoding.newsapp.domain
 
-import com.carloscoding.newsapp.data.Article
-import com.carloscoding.newsapp.home.repository.NewsRepository
+import com.carloscoding.newsapp.repository.NewsRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import java.lang.Exception
 import javax.inject.Inject
 
 class GetHeadlinesByCategoryUseCase @Inject constructor(

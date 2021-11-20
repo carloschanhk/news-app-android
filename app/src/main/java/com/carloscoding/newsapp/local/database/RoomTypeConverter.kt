@@ -1,4 +1,4 @@
-package com.carloscoding.newsapp.database
+package com.carloscoding.newsapp.local.database
 
 import androidx.room.TypeConverter
 import java.util.*

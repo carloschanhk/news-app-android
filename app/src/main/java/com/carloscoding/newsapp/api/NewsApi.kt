@@ -1,6 +1,6 @@
 package com.carloscoding.newsapp.api
 
-import com.carloscoding.newsapp.home.remote.dto.NewsDto
+import com.carloscoding.newsapp.remote.dto.NewsDto
 import com.carloscoding.newsapp.utils.Constant.API_KEY
 import retrofit2.http.GET
 import retrofit2.http.Query

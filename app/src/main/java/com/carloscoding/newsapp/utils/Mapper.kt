@@ -1,11 +1,8 @@
 package com.carloscoding.newsapp.utils
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import com.carloscoding.newsapp.data.Article
-import com.carloscoding.newsapp.database.ArticleEntity
-import com.carloscoding.newsapp.home.remote.dto.ArticleDto
-import com.carloscoding.newsapp.utils.Mapper.mapToDate
+import com.carloscoding.newsapp.local.database.ArticleEntity
+import com.carloscoding.newsapp.remote.dto.ArticleDto
 import java.text.SimpleDateFormat
 import java.util.*
 

@@ -1,7 +1,7 @@
-package com.carloscoding.newsapp.home.repository
+package com.carloscoding.newsapp.repository
 
 import com.carloscoding.newsapp.data.Article
-import com.carloscoding.newsapp.home.remote.NewsRemoteDatasource
+import com.carloscoding.newsapp.remote.NewsRemoteDatasource
 import com.carloscoding.newsapp.utils.Result
 import javax.inject.Inject
 import javax.inject.Singleton

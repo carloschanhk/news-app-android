@@ -1,4 +1,4 @@
-package com.carloscoding.newsapp.home.remote
+package com.carloscoding.newsapp.remote
 
 import com.carloscoding.newsapp.api.NewsApi
 import com.carloscoding.newsapp.data.Article

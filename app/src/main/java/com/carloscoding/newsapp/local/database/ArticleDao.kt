@@ -1,4 +1,4 @@
-package com.carloscoding.newsapp.database
+package com.carloscoding.newsapp.local.database
 
 import androidx.room.Dao
 import androidx.room.Insert
@@ -8,8 +8,8 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface ArticleDao {
     @Insert
-    fun insert(articleEntity: ArticleEntity)
+    suspend fun insert(articleEntity: ArticleEntity)
 
     @Query("SELECT * FROM article_entity")
-    fun getAll(): Flow<List<ArticleEntity>>
+    suspend fun getArticles(): Flow<List<ArticleEntity>>
 }

@@ -1,4 +1,4 @@
-package com.carloscoding.newsapp.home.remote.dto
+package com.carloscoding.newsapp.remote.dto
 
 data class SourceDto(
     val id: String?,
