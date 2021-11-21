@@ -1,5 +1,6 @@
 package com.carloscoding.newsapp.common_ui.news
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -10,6 +11,7 @@ import com.carloscoding.newsapp.databinding.ArticleCardBinding
 
 class ArticleAdapter : ListAdapter<Article, ArticleAdapter.ArticleViewHolder>(DiffCallback) {
     var onNewsItemClickListener: ((article: Article) -> Unit)? = null
+    var onNewsItemLongClickListener: ((article: Article) -> Unit)? = null
 
     companion object DiffCallback : DiffUtil.ItemCallback<Article>() {
         override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean =
@@ -21,22 +23,35 @@ class ArticleAdapter : ListAdapter<Article, ArticleAdapter.ArticleViewHolder>(Di
 
     }
 
-    class ArticleViewHolder(val binding: ArticleCardBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ArticleViewHolder(val binding: ArticleCardBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(article: Article) {
             binding.article = article
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
-        return ArticleViewHolder(ArticleCardBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return ArticleViewHolder(
+            ArticleCardBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         val article = getItem(position)
-        holder.apply{
+        holder.apply {
             bind(article)
-            itemView.setOnClickListener {
-                onNewsItemClickListener?.invoke(article)
+            itemView.apply {
+                setOnClickListener {
+                    onNewsItemClickListener?.invoke(article)
+                }
+                setOnLongClickListener{
+                    onNewsItemLongClickListener?.invoke(article)
+                    true
+                }
             }
         }
 
