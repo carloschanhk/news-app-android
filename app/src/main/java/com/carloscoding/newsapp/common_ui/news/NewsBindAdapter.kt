@@ -3,6 +3,7 @@ package com.carloscoding.newsapp.common_ui.news
 import android.content.res.Resources
 import android.graphics.Color
 import android.provider.Settings.Global.getString
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
@@ -50,12 +51,13 @@ fun bindDateToText(textView: TextView, date: Date) {
 }
 
 @BindingAdapter("categoryText")
-fun bindColorToTag(textView: TextView, category:String){
+fun bindColorToTag(textView: TextView, category:String?){
     textView.apply {
         text = category
         Constant.ColorMap[category]?.let {
             background.setTint(Color.parseColor(textView.resources.getString(it)))
         }
+        visibility = if (category == null) View.INVISIBLE else View.VISIBLE
     }
 }
 

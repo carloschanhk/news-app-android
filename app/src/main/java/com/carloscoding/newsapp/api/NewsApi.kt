@@ -32,8 +32,6 @@ interface NewsApi {
     suspend fun searchHeadlines(
         @Query("q")
         keyword: String,
-        @Query("country")
-        country: String = "us",
         @Query("language")
         language: String = "en",
         @Query("apiKey")

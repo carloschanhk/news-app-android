@@ -19,9 +19,9 @@
 
     <fragment
         android:id="@+id/navigation_search"
-        android:name="com.carloscoding.newsapp.profile.ui.ProfileFragment"
+        android:name="com.carloscoding.newsapp.search.ui.SearchFragment"
         android:label="@string/title_search"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_search" />
     <fragment
         android:id="@+id/articleFragment"
         android:name="com.carloscoding.newsapp.common_ui.article.ArticleFragment"
