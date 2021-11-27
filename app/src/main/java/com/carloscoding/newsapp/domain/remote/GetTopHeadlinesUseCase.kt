@@ -1,15 +1,27 @@
 package com.carloscoding.newsapp.domain.remote
 
+import com.carloscoding.newsapp.domain.setting.GetPreferencesUseCase
 import com.carloscoding.newsapp.repository.NewsRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class GetTopHeadlinesUseCase @Inject constructor(
-    private val repository: NewsRepository
+    private val repository: NewsRepository,
+    private val getPreferencesUseCase: GetPreferencesUseCase
 ) {
-    suspend operator fun invoke(categories: List<String>, isRefresh: Boolean): ArticleOutput {
+    private lateinit var categories :List<String>
+
+    suspend operator fun invoke( isRefresh: Boolean): ArticleOutput {
         return withContext(Dispatchers.IO) {
+            when(val categoryPref : GetPreferencesUseCase.Output = getPreferencesUseCase.invoke()){
+                is GetPreferencesUseCase.Output.Error -> {
+                    return@withContext ArticleOutput.Error(categoryPref.exception)
+                }
+                is GetPreferencesUseCase.Output.Success -> {
+                    categories = categoryPref.pref
+                }
+            }
             val cache = repository.getCachedArticles()
             if (!isRefresh) {
                 cache?.let {

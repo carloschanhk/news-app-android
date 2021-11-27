@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.carloscoding.newsapp.domain.remote.ArticleOutput
 import com.carloscoding.newsapp.domain.remote.GetHeadlinesByCategoryUseCase
 import com.carloscoding.newsapp.domain.remote.GetTopHeadlinesUseCase
+import com.carloscoding.newsapp.domain.setting.GetPreferencesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -17,7 +18,7 @@ import javax.inject.Inject
 @HiltViewModel
 class NewsViewModel @Inject constructor(
     val getHeadlinesByCategoryUseCase: GetHeadlinesByCategoryUseCase,
-    val getTopHeadlinesUseCase: GetTopHeadlinesUseCase
+    val getTopHeadlinesUseCase: GetTopHeadlinesUseCase,
 ) : ViewModel() {
 
     private val _newsState = MutableLiveData(NewsState())
@@ -26,20 +27,9 @@ class NewsViewModel @Inject constructor(
     private val _isSwipeRefreshing = MutableLiveData(false)
     val isSwipeRefreshing: LiveData<Boolean> = _isSwipeRefreshing
 
-    var getHeadlineJob : Job? = null
+    private var getHeadlineJob : Job? = null
 
     lateinit var category: String
-
-    // TODO: Hardcoded list, replace by shared preference later
-    private val categories: List<String> = listOf(
-        "Today",
-        "Business",
-        "Entertainment",
-        "Health",
-        "Science",
-        "Sports",
-        "Technology",
-    )
 
     fun initViewModel(category: String){
         this.category = category
@@ -62,10 +52,7 @@ class NewsViewModel @Inject constructor(
         getHeadlineJob?.cancel()
         getHeadlineJob = viewModelScope.launch {
             val result: ArticleOutput = if (category == "Today") {
-                val param = categories.toMutableList().apply {
-                    removeFirst()
-                }
-                getTopHeadlinesUseCase(param, isRefresh)
+                getTopHeadlinesUseCase(isRefresh)
             } else {
                 getHeadlinesByCategoryUseCase(category, isRefresh)
             }
