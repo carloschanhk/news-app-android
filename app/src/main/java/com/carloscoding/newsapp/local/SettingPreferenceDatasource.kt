@@ -8,6 +8,7 @@ import com.carloscoding.newsapp.utils.Constant.CONST_CATEGORIES
 import com.google.gson.Gson
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
+import java.io.Serializable
 import javax.inject.Inject
 
 class SettingPreferenceDatasource @Inject constructor(
@@ -20,7 +21,7 @@ class SettingPreferenceDatasource @Inject constructor(
 
     suspend fun setPreferences(selectedCategories: List<String>) {
         dataStore.edit { store ->
-            store[CATEGORY_PREF_KEY] = gson.toJson(selectedCategories)
+            store[CATEGORY_PREF_KEY] = gson.toJson(CategoryPref(selectedCategories))
         }
     }
 
@@ -32,5 +33,5 @@ class SettingPreferenceDatasource @Inject constructor(
 
     data class CategoryPref(
         val pref : List<String>
-    )
+    ) : Serializable
 }

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.carloscoding.newsapp.setting.SettingViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        tools:context=".setting.SettingDialogFragment">
+
+        <TextView
+            android:id="@+id/tv_setting_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/setting_page_title"
+            android:textSize="18sp"
+            android:layout_marginVertical="10dp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_category_checkbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:dataset="@{viewModel.checkboxCategories}"
+            android:overScrollMode="never"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@id/btn_apply_preference"
+            app:layout_constraintTop_toBottomOf="@id/tv_setting_title" />
+
+        <Button
+            android:id="@+id/btn_apply_preference"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{()-> viewModel.onApplyButtonClicked()}"
+            android:text="@string/btn_apply_text"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/color_main"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </LinearLayout>
+</layout>

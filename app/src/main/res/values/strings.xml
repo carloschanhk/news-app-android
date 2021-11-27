@@ -29,4 +29,6 @@
     <string name="delete_dialog_message">Are you sure to delete this Article from favourite?</string>
     <string name="search_hint">Search...</string>
     <string name="favourite_app_bar_title">Bookmarked Articles</string>
+    <string name="setting_page_title">Choose the category you\'re interested in:</string>
+    <string name="btn_apply_text">Apply</string>
 </resources>

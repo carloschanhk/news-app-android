@@ -17,5 +17,6 @@
     <color name="grey">#4C4A47</color>
     <color name="bookmarked">#FFC107</color>
     <color name="light_grey">#B3ABA6</color>
+    <color name="transparent">#00000000</color>
 
 </resources>
