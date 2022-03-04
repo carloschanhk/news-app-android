@@ -15,6 +15,8 @@ import com.carloscoding.newsapp.R
 import com.carloscoding.newsapp.data.Article
 import com.carloscoding.newsapp.utils.Constant
 import java.util.*
+import java.util.concurrent.TimeUnit
+import kotlin.time.Duration.Companion.days
 
 @BindingAdapter(value = ["dataset"], requireAll = true)
 fun bindDataToRecyclerView(view: RecyclerView, dataset: List<Article>) {
@@ -37,7 +39,7 @@ fun bindDateToText(textView: TextView, date: Date) {
         time = date
     }
     val currentTime = Calendar.getInstance()
-    val dayDifference = currentTime.get(Calendar.DATE) - writtenAt.get(Calendar.DATE)
+    val dayDifference = TimeUnit.MILLISECONDS.toDays(currentTime.timeInMillis - writtenAt.timeInMillis).toInt()
     if (dayDifference == 0) {
         val hour = currentTime.get(Calendar.HOUR_OF_DAY) - writtenAt.get(Calendar.HOUR_OF_DAY)
         if (hour == 0) {
